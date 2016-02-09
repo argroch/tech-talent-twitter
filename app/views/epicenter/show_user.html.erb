@@ -1,20 +1,53 @@
-<h1>@<%= @user.username %>'s Profile &amp; Tweets</h1>
+<div class="jumbotron">
+	<h1>@<%= @user.username %>'s Profile &amp; Tweets</h1>
+</div>
 
-<p><%= @user.name %></p>
-<p><%= @user.location %></p>
-<p><%= @user.bio %></p>
-
-<p>
-	<% if current_user.following.include?(@user.id) %>
-		<%= link_to "Unfollow", unfollow_path(id: @user.id), class: "btn btn-danger" %>
-	<% else %>
-		<%= link_to "Follow", now_following_path(id: @user.id), class: "btn btn-primary" %>
-	<% end %>
-</p>
-
-<% @user.tweets.each do |tweet| %>
-	<div>
-		<p><%= tweet.message %></p>
-		<p>@<%= tweet.user.username %></p>
+<div class="row center-it">
+	<div class="col-md-offset-4 col-md-2">
+		<p>TWEETS</p>
+		<p><%= link_to @user.tweets.count, show_user_path(id: @user.id) %></p>
 	</div>
-<% end %>
+	<div class="col-md-2">
+		<p>FOLLOWING</p>
+		<p><%= link_to @user.following.count, following_path(id: @user.id) %></p>
+	</div>
+	<div class="col-md-2">
+		<p>FOLLOWERS</p>
+		<p><%= link_to @followercount, followers_path(id: @user.id) %></p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-3">
+		<h3><%= link_to @user.name, show_user_path(id: @user.id) %></h3>
+		<p><%= link_to "@#{@user.username}", show_user_path(id: @user.id) %></p>
+		<p><%= @user.bio %></p>
+		<p><i class="fa fa-map-marker"></i> <%= @user.location %></p>
+		<p><i class="fa fa-calendar"></i> Joined <%= @user.created_at.strftime("%B %Y") %></p>
+		<p>
+			<% if current_user.following.include?(@user.id) %>
+				<%= link_to "Unfollow", unfollow_path(id: @user.id), class: "btn btn-danger" %>
+			<% else %>
+				<%= link_to "Follow", now_following_path(id: @user.id), class: "btn btn-primary" %>
+			<% end %>
+		</p>
+	</div>
+	<div class="col-md-8 col-md-offset-1">
+		<div class="row">
+			<div class="col-md-12 borderline">
+				<h2>Tweets</h2>
+			</div>
+		</div>
+
+		<div class="row">
+			<% @user.tweets.each do |tweet| %>
+				<div class="col-md-12 borderline tweet-area">
+					<p>
+						<%= link_to tweet.user.name, show_user_path(id: tweet.user.id) %> <%= link_to "@#{tweet.user.username}", show_user_path(id: tweet.user.id) %> &#8226; <%= time_ago_in_words(tweet.created_at) %>
+					</p>
+					<p><%= tweet.message %></p>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

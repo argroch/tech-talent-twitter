@@ -1,12 +1,55 @@
-<h1>@<%= current_user.username %>'s Twitter Feed</h1>
-
-<p>Here is what your friends are saying:</p>
-
-<div>
-	<% @following_tweets.each do |tweet| %>
-		<div>
-			<p><%= tweet.message %></p>
-			<p>@<%= tweet.user.username %></p>
+<div class="row">
+	<div class="col-md-4">
+		<div class="row">
+			<div class="col-md-2">
+				<%= image_tag current_user.avatar.url, width: "50" %>
+			</div>
+			<div class="col-md-10">
+				<h3><%= link_to current_user.name, show_user_path(id: current_user.id) %></h3>
+				<p><%= link_to "@#{current_user.username}", show_user_path(id: current_user.id) %></p>
+			</div>
 		</div>
-	<% end %>
+		<div class="row center-it">
+			<div class="col-md-4">
+				TWEETS
+			</div>
+			<div class="col-md-4">
+				FOLLOWING
+			</div>
+			<div class="col-md-4">
+				FOLLOWERS
+			</div>
+		</div>
+		<div class="row center-it">
+			<div class="col-md-4">
+				<%= link_to current_user.tweets.count, show_user_path(id: current_user.id) %>
+			</div>
+			<div class="col-md-4">
+				<%= link_to current_user.following.count, following_path(id: current_user.id) %>
+			</div>
+			<div class="col-md-4">
+				<%= link_to @followercount, followers_path(id: current_user.id) %>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-7 col-md-offset-1">
+		<div class="row new-tweet-area">
+			<div class="col-md-1">
+				<%= image_tag current_user.avatar.url, width: "50" %>
+			</div>
+			<div class="col-md-11 mtop-6">
+				 <%= render 'tweets/form' %>
+			</div>
+		</div>
+		<div class="row">
+			<% @following_tweets.each do |tweet| %>
+				<div class="col-md-12 tweet-area borderline">
+					<p>
+						<%= link_to tweet.user.name, show_user_path(id: tweet.user.id) %> <%= link_to "@#{tweet.user.username}", show_user_path(id: tweet.user.id) %> &#8226; <%= time_ago_in_words(tweet.created_at) %>
+					</p>
+					<p><%= tweet.message %></p>
+				</div>
+			<% end %>
+		</div>
+	</div>
 </div>

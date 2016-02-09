@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208154615) do
+ActiveRecord::Schema.define(version: 20160209025237) do
 
   create_table "tweets", force: :cascade do |t|
     t.string   "message"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160208154615) do
     t.text     "bio"
     t.string   "location"
     t.text     "following"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
