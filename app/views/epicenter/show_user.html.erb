@@ -24,13 +24,15 @@
 		<p><%= @user.bio %></p>
 		<p><i class="fa fa-map-marker"></i> <%= @user.location %></p>
 		<p><i class="fa fa-calendar"></i> Joined <%= @user.created_at.strftime("%B %Y") %></p>
-		<p>
-			<% if current_user.following.include?(@user.id) %>
-				<%= link_to "Unfollow", unfollow_path(id: @user.id), class: "btn btn-danger" %>
-			<% else %>
-				<%= link_to "Follow", now_following_path(id: @user.id), class: "btn btn-primary" %>
-			<% end %>
-		</p>
+		<% if @user.id != current_user.id %>
+			<p>
+				<% if current_user.following.include?(@user.id) %>
+					<%= link_to "Following", unfollow_path(id: @user.id), class: "btn btn-primary", id: "unfollow_btn" %>
+				<% else %>
+					<%= link_to "Follow", now_following_path(id: @user.id), class: "btn btn-primary" %>
+				<% end %>
+			</p>
+		<% end %>
 	</div>
 	<div class="col-md-8 col-md-offset-1">
 		<div class="row">

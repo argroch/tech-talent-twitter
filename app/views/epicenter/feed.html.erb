@@ -35,7 +35,7 @@
 	<div class="col-md-7 col-md-offset-1">
 		<div class="row new-tweet-area">
 			<div class="col-md-1">
-				<%= image_tag current_user.avatar.url, width: "50" %>
+				<%= image_tag current_user.avatar.url, class: "mini-pic" %>
 			</div>
 			<div class="col-md-11 mtop-6">
 				 <%= render 'tweets/form' %>
@@ -45,7 +45,10 @@
 			<% @following_tweets.each do |tweet| %>
 				<div class="col-md-12 tweet-area borderline">
 					<p>
-						<%= link_to tweet.user.name, show_user_path(id: tweet.user.id) %> <%= link_to "@#{tweet.user.username}", show_user_path(id: tweet.user.id) %> &#8226; <%= time_ago_in_words(tweet.created_at) %>
+						<%= link_to show_user_path(id: tweet.user.id) do %> 
+							<%= tweet.user.name %> <span class="no-underline"><%= "@#{tweet.user.username}" %></span>
+						<% end %>
+						&#8226; <%= time_ago_in_words(tweet.created_at) %>
 					</p>
 					<p><%= tweet.message %></p>
 				</div>
