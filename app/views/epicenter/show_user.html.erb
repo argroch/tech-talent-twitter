@@ -42,7 +42,7 @@
 		</div>
 
 		<div class="row">
-			<% @user.tweets.each do |tweet| %>
+			<% @user.tweets.order(created_at: :desc).each do |tweet| %>
 				<div class="col-md-12 borderline tweet-area">
 					<p>
 						<%= link_to tweet.user.name, show_user_path(id: tweet.user.id) %> <%= link_to "@#{tweet.user.username}", show_user_path(id: tweet.user.id) %> &#8226; <%= time_ago_in_words(tweet.created_at) %>

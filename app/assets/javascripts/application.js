@@ -26,7 +26,24 @@ $(document).ready(function(){
 		$(this).removeClass('btn-danger');
 		$(this).addClass('btn-primary');
 	});
+
+
 })
+
+function updateCountdown(){
+  // 140 is the max message length
+  var remaining = 140 - jQuery('.message').val().length;
+  $('.countdown').html(remaining);
+  if(remaining < 0) {
+  	$('.countdown').addClass('red-text');
+  }
+}
+
+$(document).ready(function($) {
+  updateCountdown();
+  $('.message').change(updateCountdown);
+  $('.message').keyup(updateCountdown);
+});
 
 
 
