@@ -29,24 +29,57 @@
             <li></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li>
-              <%= link_to edit_user_registration_path do %>
-                <i class="fa fa-pencil"></i> Edit Profile
-              <% end %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag current_user.avatar.url, width: "35" %><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to edit_user_registration_path do %>
+                    <i class="fa fa-pencil"></i> Edit Profile
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                   <i class="fa fa-sign-out"></i> Sign Out
+                  <% end %>
+                </li>
+              </ul>
             </li>
             <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i> Sign Out
-              <% end %>
+              <!-- Button for new tweet modal -->
+              <a href="#" data-toggle="modal" data-target="#tweet-modal">
+                <button class="btn btn-info">
+                  <i class="fa fa-pencil-square-o"></i> Tweet
+                </button>  
+              </a>            
             </li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+
+    <div class="modal fade" id="tweet-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header center-it">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Compose new Tweet</h4>
+          </div>
+          <div class="modal-body">
+            <p><%= render 'tweets/form' %></p>
+          </div>
+         <!--  <div class="modal-footer"> -->
+            <!-- future use? -->
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
   <% end %>
 
   <div class="container">
 		<%= yield %>
 	</div>
+
+
+
 </body>
 </html>
