@@ -9,7 +9,7 @@ class EpicenterController < ApplicationController
     # to find the ones associated with
     # users from the current_user's 
     # following array.
-  	Tweet.all.each do |tweet|
+  	Tweet.order(created_at: :desc).each do |tweet|
   		if current_user.following.include?(tweet.user_id) || tweet.user_id == current_user.id
   			@following_tweets.push(tweet)
         # And those tweets are pushed into
