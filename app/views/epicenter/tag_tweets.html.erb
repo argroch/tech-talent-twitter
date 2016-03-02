@@ -1,16 +1,13 @@
+
+<div class="center-it tag-topic-header">
+	<h1><%= @tag.topic %></h1>
+</div>
+
 <div class="row">
 	<%= render 'currentuser_stats' %>
 	<div class="col-md-7 col-md-offset-1">
-		<div class="row new-tweet-area">
-			<div class="col-md-1">
-				<%= image_tag current_user.avatar.url, class: "mini-pic" %>
-			</div>
-			<div class="col-md-11 mtop-6">
-				 <%= render 'tweets/form' %>
-			</div>
-		</div>
 		<div class="row">
-			<% @following_tweets.each do |tweet| %>
+			<% @tag.tweets.each do |tweet| %>
 				<div class="col-md-12 tweet-area borderline">
 					<p>
 						<%= link_to show_user_path(id: tweet.user.id) do %> 

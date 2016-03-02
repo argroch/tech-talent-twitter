@@ -18,6 +18,11 @@
 @import "bootstrap";
 @import "font-awesome";
 
+.tag-topic-header {
+	background-color: #2fc2ef;
+	color: white;
+}
+
 .mini-pic {
 	width: 50px;
 }
@@ -36,6 +41,10 @@
 
 .pleft-10 {
 	padding-left: 10px;
+}
+
+.pbot-50 {
+	padding-bottom: 50px;
 }
 
 .new-tweet-area {
@@ -75,4 +84,8 @@ a:hover.no-underline{
 
 .red-text {
 	color: red;
+}
+
+.cant-see-me {
+	display: none;
 }

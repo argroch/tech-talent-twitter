@@ -16,6 +16,7 @@
 //= require_tree .
 
 
+
 $(document).ready(function(){
 	$('#unfollow_btn').hover(function(){
 		$(this).removeClass('btn-primary');
@@ -27,8 +28,10 @@ $(document).ready(function(){
 		$(this).addClass('btn-primary');
 	});
 
-
-})
+	// $('#unhide_form').click(function(){
+	// 	$('#hide_count_btn').removeClass('cant-see-me');
+	// });
+});
 
 function updateCountdown(){
   // 140 is the max message length
@@ -44,6 +47,8 @@ $(document).ready(function($) {
   $('.message').change(updateCountdown);
   $('.message').keyup(updateCountdown);
 });
+
+
 
 
 
