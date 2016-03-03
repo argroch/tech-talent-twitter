@@ -6,7 +6,6 @@
 				<%= image_tag current_user.avatar.url, class: "mini-pic" %>
 			</div>
 			<div class="col-md-11 mtop-6">
-				 <%#= render 'tweets/form' %>
 				 <%= form_tag create_tweet_path do %>
 				 	<div class="form-group">
 				 		<%= text_area_tag :message, nil, placeholder: "What's happening?", class: "form-control feed-message", id: "feed_tweeting", rows: "1" %>

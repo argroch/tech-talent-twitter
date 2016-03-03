@@ -43,7 +43,7 @@ $(document).ready(function(){
 	// we want the input field to shrink again
 	// and the button and character count to be hidden
 	$(document).click(function(event){
-		if (!($(event.target).closest("#feed_tweeting").length)) {
+		if (!($(event.target).closest("#feed_tweeting").length) && $('#feed_tweeting').val() == "") {
 			$("#feed_tweeting").attr('rows','1');
 			$("#feed_tweeting_btn").hide();
 		}
