@@ -18,6 +18,9 @@
 
 
 $(document).ready(function(){
+	// "Following" button on Show User page
+	// changes to "Unfollow" when hovered over
+	// (also, color change)
 	$('#unfollow_btn').hover(function(){
 		$(this).removeClass('btn-primary');
 		$(this).addClass('btn-danger');
@@ -28,17 +31,34 @@ $(document).ready(function(){
 		$(this).addClass('btn-primary');
 	});
 
-	// $('#unhide_form').click(function(){
-	// 	$('#hide_count_btn').removeClass('cant-see-me');
-	// });
+	// When you click on the field at the top of
+	// the feed, it opens up more, and the button
+	// and character count are shown
+	$('#feed_tweeting').click(function(){
+		$(this).attr('rows','3');
+		$('#feed_tweeting_btn').show();
+	});
+
+	// When we click anywhere but that input
+	// we want the input field to shrink again
+	// and the button and character count to be hidden
+	$(document).click(function(event){
+		if (!($(event.target).closest("#feed_tweeting").length)) {
+			$("#feed_tweeting").attr('rows','1');
+			$("#feed_tweeting_btn").hide();
+		}
+	});
 });
 
+// Show character count for Tweeting in the Modal
 function updateCountdown(){
   // 140 is the max message length
-  var remaining = 140 - jQuery('.message').val().length;
+  var remaining = 140 - $('.message').val().length;
   $('.countdown').html(remaining);
   if(remaining < 0) {
   	$('.countdown').addClass('red-text');
+  } else {
+  	$('.countdown').removeClass('red-text');
   }
 }
 
@@ -49,10 +69,19 @@ $(document).ready(function($) {
 });
 
 
+// Show character count for Tweeting on top of Feed
+function updateFeedCountdown(){
+  var remaining = 140 - $('.feed-message').val().length;
+  $('.feed-countdown').html(remaining);
+  if(remaining < 0) {
+  	$('.feed-countdown').addClass('red-text');
+  } else {
+  	$('.feed-countdown').removeClass('red-text');
+  }
+}
 
-
-
-
-
-
-
+$(document).ready(function($) {
+  updateFeedCountdown();
+  $('.feed-message').change(updateFeedCountdown);
+  $('.feed-message').keyup(updateFeedCountdown);
+});

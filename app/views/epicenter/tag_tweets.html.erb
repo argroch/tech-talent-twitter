@@ -7,7 +7,7 @@
 	<%= render 'currentuser_stats' %>
 	<div class="col-md-7 col-md-offset-1">
 		<div class="row">
-			<% @tag.tweets.each do |tweet| %>
+			<% @tag.tweets.order(created_at: :desc).each do |tweet| %>
 				<div class="col-md-12 tweet-area borderline">
 					<p>
 						<%= link_to show_user_path(id: tweet.user.id) do %> 

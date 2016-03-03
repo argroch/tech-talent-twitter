@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="form-group">
-    <p><%= f.text_field :message, placeholder: "What's happening?", class: "form-control message" %></p>
+    <p><%= f.text_area :message, placeholder: "What's happening?", class: "form-control message", rows: "3" %></p>
     <%= f.hidden_field :user_id, value: current_user.id %>
   </div>
   <div class="form-group pull-right">
     <p>
-      <span class="countdown"></span> 
+      <span class="countdown"></span>
       <%= button_tag(type: "submit", class: "btn btn-info") do %>
         <i class="fa fa-pencil-square-o"></i> Tweet
       <% end %>

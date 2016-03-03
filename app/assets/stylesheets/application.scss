@@ -18,6 +18,10 @@
 @import "bootstrap";
 @import "font-awesome";
 
+.row1 {
+	height: 1em;
+}
+
 .tag-topic-header {
 	background-color: #2fc2ef;
 	color: white;
@@ -61,17 +65,17 @@
 input::-webkit-input-placeholder {
 color: #2fc2ef !important;
 }
- 
+
 input:-moz-placeholder { /* Firefox 18- */
-color: #2fc2ef !important;  
+color: #2fc2ef !important;
 }
- 
+
 input::-moz-placeholder {  /* Firefox 19+ */
-color: #2fc2ef !important;  
+color: #2fc2ef !important;
 }
- 
-input:-ms-input-placeholder {  
-color: #2fc2ef !important;  
+
+input:-ms-input-placeholder {
+color: #2fc2ef !important;
 }
 
 a:hover.no-underline{
