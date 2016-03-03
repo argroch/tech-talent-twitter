@@ -1,8 +1,10 @@
 class EpicenterController < ApplicationController
 
+  include ApplicationHelper
+
+  before_filter :followercount
+
   def feed
-
-
     @tweet = Tweet.new
   end
 
