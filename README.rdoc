@@ -1,7 +1,7 @@
-==
+
 Tech Talent Twitter is an app we run through in Tech Talent South's Code Immersion program.
 
-This is app was developed by myself and [@jpanaia](https://github.com/jpanaia)
+This is app was developed by myself and {Jamie Panaia}[https://github.com/jpanaia]
 
 Purpose of this app to demistify Twitter for students learning Ruby on Rails. We not only picked Twitter because it's one of the most popular apps on the planet, but also because of its history with RoR.
 
