@@ -1,28 +1,9 @@
-== README
+Tech Talent Twitter is an app we run through in Tech Talent South's Code Immersion program.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is app was developed by myself and <a href="https://github.com/jpanaia">@jpanaia</a>
 
-Things you may want to cover:
+Purpose of this app to demistify Twitter for students learning Ruby on Rails. We not only picked Twitter because it's one of the most popular apps on the planet, but also because of its history with RoR.
 
-* Ruby version
+The code within this repo is a reflection of what a student can build when attending class and doing their homework (usually, the more Front End aspects are given for homework, to focus classtime on Back End work).
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+If you would like to clone this repo, note that there is Faker data provided in the Seeds file. Running <tt>rake db:seed</tt> will populate the db with 5 users who (whom?) each have 3 tweets each. Faker doesn't seem to have a Tweet and/or hashtag generator yet, so those 15 tweets are simply 140 characters (no spaces, even). So to test out the hashtag functionality, you'll have to do that in your own tweets #sorrynotsorry

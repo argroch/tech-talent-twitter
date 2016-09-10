@@ -14,6 +14,13 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'better_errors', group: :development
+
+gem 'pry-rails'
+
+gem 'faker'
+
+# For PC cloners:
 gem 'tzinfo-data'
 
 # Use Uglifier as compressor for JavaScript assets
